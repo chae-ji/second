@@ -5,30 +5,38 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
-        int a = sc.nextInt();
-        int i = 0;
-        int x = a;
 
+        int C = sc.nextInt();
 
-        while(true){
+        for(int i = 0; i < C; i++){
+            int N = sc.nextInt(); //6
+            int L = sc.nextInt(); //3
 
-            a = ((a % 10) * 10) + (((a / 10) + (a % 10)) % 10);
+            int[] arr = new int[N];
+            double avgMin = 0;
 
-                i = i + 1;
+            for(int j = 0; j < arr.length; j++){
+                arr[j] = sc.nextInt();
+            }
 
-                if(x == a){
-                    break;
+            for(int j = 0; j < arr.length; j++){
+
+                double avg = 0;
+
+                for(int k = 0; k < L + j; k++){
+                    double sum = 0;
+                    sum += arr[k];
+                    avg = sum / L;
                 }
-
+                if(avgMin == 0){
+                    avgMin = avg;
+                }else if(avg < avgMin){
+                    avgMin = avg;
+                }
+            }
+            System.out.println(avgMin);
         }
-        System.out.println(i);
     }
 }
 
-/*
-a = 1;
-b = 10/10 + 10%10 = 1;
-c = 11
- */
